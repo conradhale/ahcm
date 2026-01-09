@@ -33,7 +33,7 @@ const images = computed(() => selectedCategory.value === null ? props.images : p
 <ul class="gallery">
   <li v-for="{src, label} in images">
     <figure>
-      <img :src="`assets/${src}`"></img>
+      <img :src="`/${src}`"></img>
       <figcaption>{{ label }}</figcaption>
     </figure>
   </li>
