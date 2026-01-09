@@ -1,6 +1,6 @@
 <template>
   <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 226.52 40.29">
-    <g id="Layer_1-2" data-name="Layer 1" style="fill: #828282">
+    <g id="Layer_1-2" data-name="Layer 1" style="fill: #c4c4c4">
       <g>
         <g>
           <path class="cls-1" d="M45.06,13.43c-2.29,0-4.44.58-6.33,1.59V0h-7.1v4.12c0,10.91,0,21.83,0,32.74h7.1c0-3.34,0-6.67,0-10.01,0-3.42,2.9-6.31,6.33-6.31s6.33,2.89,6.33,6.31v13.45h7.1v-13.45c0-7.4-6.02-13.41-13.43-13.41Z"/>
