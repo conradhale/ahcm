@@ -89,6 +89,7 @@ const setCategory = (category: string | null) => {
 
 .categories {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   gap: 1em;
   margin-block-end: 2em;
