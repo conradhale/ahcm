@@ -1,21 +1,18 @@
 <script setup lang="ts">
 import { DotLottieVue, DotLottieVueInstance } from "@lottiefiles/dotlottie-vue";
 import { useTemplateRef, onMounted, reactive } from "vue";
-import logo_fg_json from '../assets/logo_fg.json'
-import logo_bg_json from '../assets/logo_bg.json'
-import DownArrow from "../assets/DownArrow.vue";
+import DownArrowIcon from "../assets/DownArrowIcon.vue";
 
 const props = defineProps<{
   header: HTMLElement;
   after: HTMLElement;
 }>();
 
+const renderConfig = reactive({ devicePixelRatio: window.devicePixelRatio, autoResize: true });
 
-const renderConfig = reactive({devicePixelRatio: window.devicePixelRatio, autoResize: true})
-
-window.addEventListener('resize', () => {
-  renderConfig.devicePixelRatio = window.devicePixelRatio
-})
+window.addEventListener("resize", () => {
+  renderConfig.devicePixelRatio = window.devicePixelRatio;
+});
 
 const hero = useTemplateRef("hero");
 const skip_to_content = useTemplateRef("skip-to-content");
@@ -23,9 +20,9 @@ const skip_to_content = useTemplateRef("skip-to-content");
 const start = 399;
 const end = 540;
 
-const logo_fg = useTemplateRef<DotLottieVueInstance>("logo-fg");
+const logo = useTemplateRef<DotLottieVueInstance>("logo");
 onMounted(() => {
-  const lottie = logo_fg.value?.getDotLottieInstance();
+  const lottie = logo.value?.getDotLottieInstance();
 
   function scrollHandler(e: Event) {
     if (!hero.value || !lottie) {
@@ -35,6 +32,7 @@ onMounted(() => {
     if (frame < end) {
       if (lottie.isPlaying) {
         lottie.pause();
+        lottie.setSegment(start, end);
       }
       lottie.setFrame(frame);
     }
@@ -57,32 +55,22 @@ onMounted(() => {
 <template>
   <div class="hero" ref="hero">
     <DotLottieVue
-      class="logo-bg"
+      ref="logo"
       autoplay
       useFrameInterpolation
       :renderConfig="renderConfig"
-      :data="logo_bg_json"
-      :layout="{ fit: 'fit-height' }"
-    />
-    <DotLottieVue
-      ref="logo-fg"
-      class="logo-fg"
-      autoplay
-      useFrameInterpolation
-      :renderConfig="renderConfig"
-      :data="logo_fg_json"
-      :initialSegment="[0, start]"
+      src="logo.lottie"
+      :segment="[0, start]"
       :layout="{ fit: 'fit-height' }"
     />
     <h1 class="visually-hidden">Adam Hale</h1>
-    <p class="visually-hidden">Creating logical design systems informed by creative art. Designed to be practical, user-focused, and innovative.</p>
+    <p class="visually-hidden">
+      Creating logical design systems informed by creative art. Designed to be practical,
+      user-focused, and innovative.
+    </p>
 
-    <button
-      aria-label="Skip to content"
-      class="skip-to-content"
-      ref="skip-to-content"
-    >
-      <DownArrow></DownArrow>
+    <button aria-label="Skip to content" class="skip-to-content" ref="skip-to-content">
+      <DownArrowIcon></DownArrowIcon>
     </button>
   </div>
 </template>

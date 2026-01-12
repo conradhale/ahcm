@@ -2,19 +2,24 @@
   "name": "ahcm",
   "version": "1.0.0",
   "description": "",
+  "license": "ISC",
+  "author": "",
   "main": "index.js",
-  "packageManager": "pnpm@10.18.3",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
+    "@lottiefiles/dotlottie-vue": "^0.10.12",
+    "oxfmt": "^0.23.0",
+    "oxlint": "^1.38.0",
     "vitepress": "2.0.0-alpha.12",
-    "vue": "^3.5.26",
-    "@lottiefiles/dotlottie-vue": "^0.10.12"
-  }
+    "vue": "^3.5.26"
+  },
+  "packageManager": "pnpm@10.18.3"
 }
